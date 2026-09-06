@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Tools Comparison 2026 — OpenCode vs Claude Code vs OpenClaw vs DeepSeek Harness</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.7}
+.container{max-width:1200px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:48px 0 36px;border-bottom:1px solid #30363d;margin-bottom:36px}
+header h1{font-size:2.2em;color:#58a6ff;margin-bottom:8px}
+header .subtitle{color:#8b949e;font-size:1.05em}
+header .meta{margin-top:12px;color:#6e7681;font-size:.85em}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.8em;font-weight:600;margin:0 3px}
+.badge MIT{background:#1f6f3b;color:#fff}
+.badge-open{background:#1f6f3b;color:#fff}
+.badge-closed{background:#8b949e;color:#fff}
+.badge-prop{background:#b35900;color:#fff}
+.tabs{display:flex;gap:4px;margin-bottom:24px;flex-wrap:wrap;border-bottom:1px solid #30363d}
+.tab{padding:10px 20px;cursor:pointer;border:none;background:none;color:#8b949e;font-size:.95em;border-bottom:2px solid transparent;transition:all .2s}
+.tab:hover{color:#c9d1d9}
+.tab.active{color:#58a6ff;border-bottom-color:#58a6ff}
+.tab-content{display:none}
+.tab-content.active{display:block}
+table{width:100%;border-collapse:collapse;margin-bottom:28px;font-size:.9em}
+th{background:#161b22;color:#58a6ff;padding:12px 14px;text-align:left;border:1px solid #30363d;font-weight:600;position:sticky;top:0}
+td{padding:10px 14px;border:1px solid #30363d;vertical-align:top}
+tr:hover td{background:#161b22}
+.highlight{color:#58a6ff;font-weight:600}
+.good{color:#3fb950}
+.bad{color:#f85149}
+.warn{color:#d29922}
+.section-title{font-size:1.4em;color:#58a6ff;margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid #30363d}
+.tool-card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px;margin-bottom:16px}
+.tool-card h3{margin-bottom:12px}
+.tool-card .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75em;margin-right:4px}
+.tag-go{background:#00ADD8;color:#fff}
+.tag-ts{background:#3178c6;color:#fff}
+.tag-stars{background:#3a3128;color:#d29922}
+.footer{text-align:center;padding:32px 0;color:#6e7681;font-size:.85em;border-top:1px solid #30363d}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+@media(max-width:768px){table{font-size:.8em}th,td{padding:6px 8px}header h1{font-size:1.6em}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>AI Agent Tools Comparison 2026</h1>
+<p class="subtitle">OpenCode &middot; Claude Code &middot; OpenClaw &middot; DeepSeek Harness</p>
+<p class="meta">Last updated: 2026-09-06 &nbsp;|&nbsp; Data: GitHub API + Community Benchmarks</p>
+</header>
+
+<div class="tabs">
+<button class="tab active" onclick="showTab(0)">Overview</button>
+<button class="tab" onclick="showTab(1)">Architecture</button>
+<button class="tab" onclick="showTab(2)">Model & Cost</button>
+<button class="tab" onclick="showTab(3)">Coding & Quality</button>
+<button class="tab" onclick="showTab(4)">Ecosystem</button>
+<button class="tab" onclick="showTab(5)">Security</button>
+<button class="tab" onclick="showTab(6)">Selection Guide</button>
+</div>
+
+<!-- Tab 0: Overview -->
+<div class="tab-content active">
+<h2 class="section-title">Basic Info</h2>
+<table>
+<tr><th>Tool</th><th>Developer</th><th>Stars</th><th>Language</th><th>License</th><th>Core Positioning</th></tr>
+<tr><td class="highlight">OpenCode</td><td>Open Source Community</td><td>~158k</td><td><span class="tag tag-go">Go</span> + JS</td><td><span class="badge badge-open">MIT</span></td><td>Terminal coding agent, highest model flexibility</td></tr>
+<tr><td class="highlight">Claude Code</td><td>Anthropic (Official)</td><td>~144k</td><td><span class="tag tag-ts">TypeScript</span></td><td><span class="badge badge-prop">Proprietary</span></td><td>Terminal coding agent, best reasoning quality</td></tr>
+<tr><td class="highlight">OpenClaw</td><td>P. Steinberger + Community</td><td><span class="tag tag-stars">~389k</span></td><td><span class="tag tag-ts">TypeScript</span></td><td><span class="badge badge-open">Open Source</span></td><td>24/7 personal AI assistant, all-in-one platform</td></tr>
+<tr><td class="highlight">DeepSeek Harness</td><td>DeepSeek (Official)</td><td>~210k+</td><td><span class="tag tag-ts">TypeScript</span> (Node)</td><td><span class="badge badge-open">MIT</span></td><td>Agent runtime framework, "Everything is a plugin"</td></tr>
+</table>
+
+<h2 class="section-title">Quick Comparison</h2>
+<table>
+<tr><th>Dimension</th><th>OpenCode</th><th>Claude Code</th><th>OpenClaw</th><th>DeepSeek Harness</th></tr>
+<tr><td><strong>Model Flexibility</strong></td><td class="good">Highest (75+ providers)</td><td class="bad">Lowest (Claude only)</td><td class="good">High</td><td class="good">High (model-agnostic)</td></tr>
+<tr><td><strong>Code Quality</strong></td><td>Good (model-dependent)</td><td class="good">Best (SWE-bench 80.8-87.6%)</td><td>Good (not coding-focused)</td><td>Good (SWE-bench ~80.6%)</td></tr>
+<tr><td><strong>Cost</strong></td><td class="good">Lowest (free models OK)</td><td class="bad">Highest ($20-200+/mo)</td><td>Low (OAuth ride)</td><td class="good">Very low (cheap API)</td></tr>
+<tr><td><strong>China Accessibility</strong></td><td class="good">Best</td><td class="bad">Difficult (IP blocked)</td><td class="good">Good</td><td class="good">Best (direct connect)</td></tr>
+<tr><td><strong>Plugin Ecosystem</strong></td><td>Moderate (LSP/MCP)</td><td>500+ (Skills/Plugins)</td><td class="good">5,400+ (Skills)</td><td class="good">2,600+ (Cordis)</td></tr>
+<tr><td><strong>Multi-Agent</strong></td><td>Sub-agents (Build/Plan/Scout)</td><td class="good">Best (2-16 parallel)</td><td>Strong (orchestration)</td><td>Strong (Agent Teams)</td></tr>
+<tr><td><strong>Git Integration</strong></td><td>Good (undo/redo)</td><td class="good">Best (auto-snapshot + rollback)</td><td>Basic</td><td>Good (side Git snapshot)</td></tr>
+<tr><td><strong>24/7 Running</strong></td><td class="bad">No</td><td class="bad">No</td><td class="good">Yes</td><td>Yes (plugin-based)</td></tr>
+</table>
+</div>
+
+<!-- Tab 1: Architecture -->
+<div class="tab-content">
+<h2 class="section-title">Architecture Design</h2>
+<table>
+<tr><th>Aspect</th><th>OpenCode</th><th>Claude Code</th><th>OpenClaw</th><th>DeepSeek Harness</th></tr>
+<tr><td><strong>Type</strong></td><td>Terminal coding agent</td><td>Terminal coding agent</td><td>24/7 personal assistant</td><td>Agent runtime framework</td></tr>
+<tr><td><strong>Model Coupling</strong></td><td class="good">Low (any model)</td><td class="bad">High (Claude only)</td><td>Low (multi-model)</td><td class="good">Low (model-agnostic)</td></tr>
+<tr><td><strong>Plugin System</strong></td><td>LSP / MCP integration</td><td>Skills / Plugins / Hooks</td><td>Skills (5,400+)</td><td>Cordis (2,600+)</td></tr>
+<tr><td><strong>Runtime Mode</strong></td><td>On-demand</td><td>On-demand</td><td class="good">24/7 persistent</td><td>On-demand / persistent</td></tr>
+<tr><td><strong>Entry Points</strong></td><td>CLI, Desktop App</td><td>CLI, IDE</td><td>CLI, Web, Desktop, IM</td><td>CLI, Web, Desktop</td></tr>
+<tr><td><strong>Memory System</strong></td><td>Context (compact mode)</td><td>CLAUDE.md persistent</td><td>Long-term cross-session</td><td>Plugin-based memory</td></tr>
+<tr><td><strong>Core Framework</strong></td><td>Go backend + TS frontend</td><td>TypeScript (npm)</td><td>TypeScript (pnpm monorepo)</td><td>Node.js + Cordis</td></tr>
+</table>
+
+<div class="tool-card">
+<h3 style="color:#58a6ff">DeepSeek Harness — "Model + Harness = Agent"</h3>
+<p>DSH is not a model itself, but a <strong>runtime framework</strong> that connects models to real environments. All capabilities (terminal, browser, file system, search, UI, memory) are <strong>pluggable plugins</strong> via the Cordis system. <code>npx @deepseek-ai/dsh web</code> launches Web UI at 127.0.0.1:3080.</p>
+</div>
+<div class="tool-card">
+<h3 style="color:#58a6ff">OpenClaw — "The AI that really does things"</h3>
+<p>GitHub's #1 starred repo (389k). Not just a coding tool — a <strong>full-spectrum personal AI assistant</strong> that runs 24/7, connects to IM platforms (WeChat/Feishu/DingTalk/Telegram), controls browsers, manages schedules, and more. v2.0 (2026-08-31) added multi-person collaboration.</p>
+</div>
+</div>
+
+<!-- Tab 2: Model & Cost -->
+<div class="tab-content">
+<h2 class="section-title">Model Support</h2>
+<table>
+<tr><th>Tool</th><th>Supported Models</th><th>Flexibility</th><th>Local Models</th><th>Proxy/Middleware</th></tr>
+<tr><td><strong>OpenCode</strong></td><td>75+ providers: OpenAI, Claude, Gemini, Groq, DeepSeek, Qwen, GLM, Kimi, Ollama...</td><td class="good">Highest</td><td class="good">Yes (Ollama)</td><td class="good">Easiest (any Base URL)</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>Claude only (Opus/Sonnet/Haiku)</td><td class="bad">Lowest</td><td class="bad">No</td><td class="bad">Needs strong proxy</td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>Claude, GPT, Gemini, DeepSeek, etc.</td><td class="good">High</td><td>Partial</td><td class="good">Supported</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td>DeepSeek V4 (extensible to others)</td><td class="good">High</td><td class="good">Yes</td><td class="good">Supported</td></tr>
+</table>
+
+<h2 class="section-title">Speed & Token Efficiency</h2>
+<table>
+<tr><th>Tool</th><th>Speed</th><th>Token Usage</th><th>Notes</th></tr>
+<tr><td><strong>OpenCode</strong></td><td>Medium</td><td>Medium</td><td>Compact mode can reduce consumption</td></tr>
+<tr><td><strong>Claude Code</strong></td><td class="good">Fast</td><td class="bad">Most (verbose)</td><td>Detailed thinking steps + multi-agent + verbose output</td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>Medium</td><td>Medium</td><td>24/7 running, complex context management</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td class="good">Fast</td><td class="good">Excellent</td><td>DeepSeek V4 efficient + framework optimization</td></tr>
+</table>
+
+<h2 class="section-title">Cost Comparison</h2>
+<table>
+<tr><th>Tool</th><th>Tool Price</th><th>Model Cost</th><th>Value</th></tr>
+<tr><td><strong>OpenCode</strong></td><td>Free</td><td class="good">Free or very low (local/cheap models)</td><td class="good">Highest</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td>Free</td><td class="good">$0.14-$0.43/1M tokens</td><td class="good">Very High</td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>Free</td><td>Low (OAuth ride possible)</td><td>High</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>Free</td><td class="bad">$20-200+/month (Claude Pro/Max)</td><td>Lower</td></tr>
+</table>
+</div>
+
+<!-- Tab 3: Coding & Quality -->
+<div class="tab-content">
+<h2 class="section-title">Coding Performance</h2>
+<table>
+<tr><th>Benchmark</th><th>OpenCode</th><th>Claude Code</th><th>OpenClaw</th><th>DeepSeek Harness</th></tr>
+<tr><td><strong>SWE-bench Verified</strong></td><td>Model-dependent</td><td class="good">~80.8-87.6% (Best)</td><td>Model-dependent</td><td>~80.6%</td></tr>
+<tr><td><strong>Complex Refactor</strong></td><td>Good</td><td class="good">Best</td><td>Fair</td><td>Good</td></tr>
+<tr><td><strong>Large Project Planning</strong></td><td>Good</td><td class="good">Best</td><td>Fair</td><td>Good</td></tr>
+<tr><td><strong>Bug Fixing</strong></td><td>Excellent</td><td>Excellent</td><td>Good</td><td>Excellent</td></tr>
+<tr><td><strong>Quick Prototype</strong></td><td>Excellent</td><td>Excellent</td><td>Good</td><td>Excellent</td></tr>
+<tr><td><strong>Code Elegance</strong></td><td>Good</td><td class="good">Highest</td><td>Fair</td><td>Good</td></tr>
+</table>
+
+<h2 class="section-title">Multi-Agent & Parallel</h2>
+<table>
+<tr><th>Tool</th><th>Multi-Agent</th><th>Max Parallel</th><th>Notes</th></tr>
+<tr><td><strong>Claude Code</strong></td><td class="good">Best</td><td>2-16 agents</td><td>Mature collaboration mechanism</td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>Strong</td><td>9 specialized agents</td><td>Orchestration systems (e.g. "Three Departments Six Ministries")</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td>Strong</td><td>Multi-agent</td><td>Agent Teams plugin</td></tr>
+<tr><td><strong>OpenCode</strong></td><td>Good</td><td>Sub-agents</td><td>Build/Plan/Scout roles</td></tr>
+</table>
+
+<h2 class="section-title">Git Integration</h2>
+<table>
+<tr><th>Tool</th><th>Git Capability</th><th>Checkpoint / Rollback</th><th>Feature</th></tr>
+<tr><td><strong>Claude Code</strong></td><td class="good">Excellent</td><td class="good">Best (auto-snapshot + Esc Esc)</td><td>Smoothest rollback experience</td></tr>
+<tr><td><strong>OpenCode</strong></td><td>Good</td><td>Git-based + undo/redo</td><td>Built-in version control</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td>Good</td><td>Side Git + /restore</td><td>Doesn't touch project .git</td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>Basic</td><td>Session recovery</td><td>Not coding-focused</td></tr>
+</table>
+</div>
+
+<!-- Tab 4: Ecosystem -->
+<div class="tab-content">
+<h2 class="section-title">Plugin Ecosystem</h2>
+<table>
+<tr><th>Tool</th><th>Plugin Count</th><th>Plugin Type</th><th>Community Activity</th></tr>
+<tr><td><strong>OpenClaw</strong></td><td class="good">5,400+</td><td>Skills (coding, office, browser, automation, IM...)</td><td class="good">Very High (933 contributors)</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td class="good">2,600+</td><td>Cordis plugins (terminal, browser, UI, IM, vision, memory...)</td><td class="good">Explosive (210k stars in 22 days)</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>500+</td><td>Skills/Plugins (coding-focused)</td><td>High (officially maintained)</td></tr>
+<tr><td><strong>OpenCode</strong></td><td>LSP/MCP</td><td>Integration (not standalone plugin ecosystem)</td><td>Medium</td></tr>
+</table>
+
+<h2 class="section-title">IDE & Platform Support</h2>
+<table>
+<tr><th>Tool</th><th>IDE Integration</th><th>Desktop App</th><th>CLI</th><th>Web UI</th><th>IM Integration</th></tr>
+<tr><td><strong>OpenCode</strong></td><td>VS Code, Cursor, Zed, Windsurf</td><td class="good">Yes</td><td class="good">Yes</td><td>-</td><td>-</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>VS Code, JetBrains</td><td>-</td><td class="good">Yes</td><td>-</td><td>-</td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>-</td><td class="good">Yes (ClawX)</td><td class="good">Yes</td><td class="good">Yes</td><td class="good">Yes (WeChat/Feishu/DingTalk/Telegram)</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td>-</td><td class="good">Yes (multiple)</td><td class="good">Yes</td><td class="good">Yes (127.0.0.1:3080)</td><td class="good">Yes (via dsh-im plugin)</td></tr>
+</table>
+</div>
+
+<!-- Tab 5: Security -->
+<div class="tab-content">
+<h2 class="section-title">Security & Sandbox</h2>
+<table>
+<tr><th>Tool</th><th>Sandbox</th><th>Checkpoint/Rollback</th><th>Permission Control</th><th>Risk Level</th></tr>
+<tr><td><strong>Claude Code</strong></td><td>Permission prompts + checkpoints</td><td class="good">Best (auto-snapshot + Esc Esc)</td><td>Good</td><td class="good">Low</td></tr>
+<tr><td><strong>OpenCode</strong></td><td>Configurable trust levels</td><td>Git-based + undo/redo</td><td>Good</td><td class="good">Low</td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>Docker/container support</td><td>Session recovery</td><td>Well-developed</td><td class="warn">Medium (24/7 exposure)</td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td>Basic sandbox</td><td>Side Git snapshot</td><td class="bad">Plugin governance incomplete</td><td class="warn">Medium-High (prompt injection risk)</td></tr>
+</table>
+
+<div class="tool-card">
+<h3 style="color:#f85149">DeepSeek Harness Security Note</h3>
+<p>According to a Tencent Zircon Lab report, DSH's plugin system has <strong>prompt injection risk</strong> — malicious content can embed instructions in plugin return values, inducing the Agent to execute unintended operations. Additionally, a study of 11,000+ DSH plugins found that official plugin governance mechanisms are nearly non-existent. The team has acknowledged these issues and is working on improvements.</p>
+</div>
+</div>
+
+<!-- Tab 6: Selection Guide -->
+<div class="tab-content">
+<h2 class="section-title">By Need</h2>
+<table>
+<tr><th>Your Need</th><th>First Choice</th><th>Alternative</th></tr>
+<tr><td>Best code quality</td><td class="highlight">Claude Code</td><td>OpenCode + Claude</td></tr>
+<tr><td>Model flexibility</td><td class="highlight">OpenCode</td><td>DSH</td></tr>
+<tr><td>Direct access in China</td><td class="highlight">DeepSeek Harness</td><td>OpenCode</td></tr>
+<tr><td>Lowest cost</td><td class="highlight">DeepSeek Harness</td><td>OpenCode</td></tr>
+<tr><td>24/7 all-in-one assistant</td><td class="highlight">OpenClaw</td><td>DSH</td></tr>
+<tr><td>Complex refactor / large project</td><td class="highlight">Claude Code</td><td>OpenCode</td></tr>
+<tr><td>Quick prototype / lightweight</td><td class="highlight">DeepSeek Harness</td><td>OpenCode</td></tr>
+<tr><td>Rich plugin ecosystem</td><td class="highlight">OpenClaw</td><td>DSH</td></tr>
+<tr><td>Security-sensitive project</td><td class="highlight">Claude Code</td><td>OpenCode</td></tr>
+<tr><td>Privacy / local models</td><td class="highlight">OpenCode</td><td>DSH</td></tr>
+</table>
+
+<h2 class="section-title">By User Profile</h2>
+<table>
+<tr><th>User Type</th><th>Recommendation</th><th>Reason</th></tr>
+<tr><td>China-based developer</td><td class="highlight">OpenCode + DSH</td><td>Direct access, controllable cost</td></tr>
+<tr><td>Overseas enterprise team</td><td class="highlight">Claude Code</td><td>Best quality, best checkpoints</td></tr>
+<tr><td>AI enthusiast / explorer</td><td class="highlight">OpenClaw</td><td>All-in-one, versatile</td></tr>
+<tr><td>DeepSeek power user</td><td class="highlight">DeepSeek Harness</td><td>Native optimization, extremely low cost</td></tr>
+<tr><td>Budget-constrained individual</td><td class="highlight">DSH / OpenCode</td><td>Both can be used completely free</td></tr>
+<tr><td>Pursuing highest quality</td><td class="highlight">Claude Code</td><td>SWE-bench perennial leader</td></tr>
+</table>
+
+<h2 class="section-title">Common Combination for Power Users</h2>
+<table>
+<tr><th>Role</th><th>Tool</th><th>Usage</th></tr>
+<tr><td>Main</td><td class="highlight">OpenCode</td><td>Daily coding + flexible model switching</td></tr>
+<tr><td>High-quality</td><td class="highlight">Claude Code</td><td>Complex tasks (via proxy, occasional)</td></tr>
+<tr><td>Low-cost</td><td class="highlight">DeepSeek Harness</td><td>Quick iteration with DeepSeek V4</td></tr>
+<tr><td>All-in-one</td><td class="highlight">OpenClaw</td><td>Non-coding tasks, 24/7 assistant</td></tr>
+</table>
+
+<h2 class="section-title">Quick Install</h2>
+<table>
+<tr><th>Tool</th><th>Command</th></tr>
+<tr><td><strong>OpenCode</strong></td><td><code>curl -fsSL https://opencode.ai/install \| bash</code></td></tr>
+<tr><td><strong>Claude Code</strong></td><td><code>npm install -g @anthropic-ai/claude-code</code></td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>See <a href="https://github.com/openclaw/openclaw" target="_blank">official repo</a></td></tr>
+<tr><td><strong>DeepSeek Harness</strong></td><td><code>npx @deepseek-ai/dsh web</code></td></tr>
+</table>
+</div>
+
+<div class="footer">
+<p>AI Agent Tools Comparison 2026 &middot; <a href="https://github.com/Zane517/ai-agent-comparison">GitHub Repo</a></p>
+<p>Data sources: GitHub API, SWE-bench leaderboard, community benchmarks, official docs</p>
+</div>
+</div>
+
+<script>
+function showTab(i){
+document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+document.querySelectorAll('.tab-content').forEach((c,idx)=>c.classList.toggle('active',idx===i));
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
